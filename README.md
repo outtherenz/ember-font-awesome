@@ -33,15 +33,15 @@ Addon version         | Ember version | Addon name
 
 ### V4.0.0, important notes
 
-Version 4.0.0 of this addon introduces an entirely new approach in which the addon contains no components and has 0 runtime overhead. Instead, all usages of `{{fa-icon}}`,
+Version 4.0.0 of this addon introduces an entirely new approach in which the addon contains no components and has 0 runtime overhead. Instead, all usages of `{{old-fa-icon}}`,
 `{{fa-list}}` and `{{fa-stack}}` are transformed into the right markup in compile-time.
 
 To achieve this we had to make the component a bit more constrained so it can be compiled
 statically. There is a few (edge) cases that we had to drop to achieve that:
 
-- `{{fa-icon tagName=boundValue}}`. You cannot pass a bound value to the tag name (you still can pass a fixed value like `{{fa-icon tagName="span"}}`)
-- Previously both `{{fa-icon "credit-card"}}` and `{{fa-icon "fa-credit-card"}}` were valid invocations. Now only the first one is. You should not include the `fa-` prefix on the icon names.
-- Previously both `{{fa-icon size="2"}}` and `{{fa-icon size="2x"}}` were valid sizes. Now only the first one is, you cannot pass a string ending in `x`.
+- `{{old-fa-icon tagName=boundValue}}`. You cannot pass a bound value to the tag name (you still can pass a fixed value like `{{old-fa-icon tagName="span"}}`)
+- Previously both `{{old-fa-icon "credit-card"}}` and `{{old-fa-icon "fa-credit-card"}}` were valid invocations. Now only the first one is. You should not include the `fa-` prefix on the icon names.
+- Previously both `{{old-fa-icon size="2"}}` and `{{old-fa-icon size="2x"}}` were valid sizes. Now only the first one is, you cannot pass a string ending in `x`.
 - It requires a Glimmer2 version of Ember (2.10 or bigger)
 - **It requires node >= 6** (working on making it 4.5+ soon)
 - If you use this addon from within another addon, you have to move it from `devDependencies` to `dependencies` in your `package.json`.
@@ -98,7 +98,7 @@ $ ember install ember-font-awesome
 Use the component in your Handlebars templates:
 
 ```hbs
-{{fa-icon "camera"}}
+{{old-fa-icon "camera"}}
 ```
 
 This will render:
@@ -113,7 +113,7 @@ _Note: We are currently [working hard to get to version 5](https://github.com/ma
 
 The [Font Awesome examples](http://fortawesome.github.io/Font-Awesome/examples/)
 illustrate the various options and their effects. It should be fairly simple to
-map these options to their `{{fa-icon}}` counterparts.
+map these options to their `{{old-fa-icon}}` counterparts.
 
 ## :sos: Looking for Help?
 
@@ -124,11 +124,11 @@ map these options to their `{{fa-icon}}` counterparts.
 #### Larger Icons
 
 ```hbs
-{{fa-icon "star" size="lg"}}
-{{fa-icon "star" size=2}}
-{{fa-icon "star" size=3}}
-{{fa-icon "star" size=4}}
-{{fa-icon "star" size=5}}
+{{old-fa-icon "star" size="lg"}}
+{{old-fa-icon "star" size=2}}
+{{old-fa-icon "star" size=3}}
+{{old-fa-icon "star" size=4}}
+{{old-fa-icon "star" size=5}}
 ```
 
 #### Fixed Width Icons
@@ -136,10 +136,10 @@ map these options to their `{{fa-icon}}` counterparts.
 ```hbs
 <div class="list-group">
   <a class="list-group-item" href="#">
-    {{fa-icon "home" fixedWidth=true}} Home
+    {{old-fa-icon "home" fixedWidth=true}} Home
   </a>
   <a class="list-group-item" href="#">
-    {{fa-icon "book" fixedWidth=true}} Library
+    {{old-fa-icon "book" fixedWidth=true}} Library
   </a>
 </div>
 ```
@@ -148,10 +148,10 @@ map these options to their `{{fa-icon}}` counterparts.
 
 ```hbs
 {{#fa-list as |l|}}
-  <li>{{l.fa-icon "check-square"}}List icons</li>
-  <li>{{l.fa-icon "check-square"}}can be used</li>
-  <li>{{l.fa-icon "spinner" spin=true}}as bullets</li>
-  <li>{{l.fa-icon "square"}}in lists</li>
+  <li>{{l.old-fa-icon "check-square"}}List icons</li>
+  <li>{{l.old-fa-icon "check-square"}}can be used</li>
+  <li>{{l.old-fa-icon "spinner" spin=true}}as bullets</li>
+  <li>{{l.old-fa-icon "square"}}in lists</li>
 {{/fa-list}}
 ```
 
@@ -159,7 +159,7 @@ map these options to their `{{fa-icon}}` counterparts.
 
 ```hbs
 <p>
-{{fa-icon "quote-left" pull="left" border=true}}
+{{old-fa-icon "quote-left" pull="left" border=true}}
 ...tomorrow we will run faster, stretch out our arms farther...
 And then one fine morning— So we beat on, boats against the
 current, borne back ceaselessly into the past.
@@ -169,22 +169,22 @@ current, borne back ceaselessly into the past.
 #### Animated Icons
 
 ```hbs
-{{fa-icon "spinner" spin=true}}
-{{fa-icon "circle-o-notch" spin=true}}
-{{fa-icon "refresh" spin=true}}
-{{fa-icon "cog" spin=true}}
-{{fa-icon "spinner" pulse=true}}
+{{old-fa-icon "spinner" spin=true}}
+{{old-fa-icon "circle-o-notch" spin=true}}
+{{old-fa-icon "refresh" spin=true}}
+{{old-fa-icon "cog" spin=true}}
+{{old-fa-icon "spinner" pulse=true}}
 ```
 
 #### Rotate & Flipped
 
 ```hbs
-{{fa-icon "shield"}} normal
-{{fa-icon "shield" rotate=90}} rotated 90 degrees
-{{fa-icon "shield" rotate=180}} rotated 180 degrees
-{{fa-icon "shield" rotate=270}} rotated 270 degrees
-{{fa-icon "shield" flip="horizontal"}} flipped horizontal
-{{fa-icon "shield" flip="vertical"}} flipped vertical
+{{old-fa-icon "shield"}} normal
+{{old-fa-icon "shield" rotate=90}} rotated 90 degrees
+{{old-fa-icon "shield" rotate=180}} rotated 180 degrees
+{{old-fa-icon "shield" rotate=270}} rotated 270 degrees
+{{old-fa-icon "shield" flip="horizontal"}} flipped horizontal
+{{old-fa-icon "shield" flip="vertical"}} flipped vertical
 ```
 
 #### Stacked Icons
@@ -217,7 +217,7 @@ To better support accessibility (i.e. screen readers), the helper adds the
 `aria-hidden` attribute by default:
 
 ```hbs
-{{fa-icon "star"}}
+{{old-fa-icon "star"}}
 ```
 
 Results in:
@@ -228,7 +228,7 @@ Results in:
 To remove the `aria-hidden` attribute:
 
 ```hbs
-{{fa-icon "star" ariaHidden=false}}
+{{old-fa-icon "star" ariaHidden=false}}
 ```
 
 #### The `aria-label` Attribute
@@ -237,7 +237,7 @@ To better support accessibility (i.e. screen readers), the helper adds an
 optional `aria-label` attribute:
 
 ```hbs
-{{fa-icon "star" ariaLabel="Click Me"}}
+{{old-fa-icon "star" ariaLabel="Click Me"}}
 ```
 
 Results in:
@@ -250,7 +250,7 @@ Results in:
 You can respond to actions on the icon by passing on action handlers:
 
 ```hbs
-{{fa-icon "star" click=(action "myClickHandler")}}
+{{old-fa-icon "star" click=(action "myClickHandler")}}
 ```
 
 #### Tag Name
@@ -258,7 +258,7 @@ You can respond to actions on the icon by passing on action handlers:
 Use `tagName` to control the generated markup:
 
 ```hbs
-{{fa-icon "star" tagName="span"}}
+{{old-fa-icon "star" tagName="span"}}
 ```
 Results in:
 
@@ -269,7 +269,7 @@ Results in:
 #### Custom Class Names
 
 ```hbs
-{{fa-icon "bicycle" class="my-custom-class"}}
+{{old-fa-icon "bicycle" class="my-custom-class"}}
 ```
 
 Results in:
@@ -281,7 +281,7 @@ Results in:
 #### Title attribute
 
 ```hbs
-{{fa-icon "edit" title="Edit the item"}}
+{{old-fa-icon "edit" title="Edit the item"}}
 ```
 
 Results in:
@@ -363,7 +363,7 @@ var app = new EmberApp({
 
 ### Including specific icons
 
-By default this addon detects which icons are used based on the invocation parameters of `{{fa-icon}}`,
+By default this addon detects which icons are used based on the invocation parameters of `{{old-fa-icon}}`,
 and removes the rest, but you can whitelist in `ember-cli-build.js` some specific icons to be always
 included regardless of if they are used or not:
 
@@ -377,20 +377,20 @@ var app = new EmberApp({
 
 ### Add a component for compatibility
 
-Since all invocations of `{{fa-icon}}` are transformed to HTML tags at compile time, there's no need for an actual `{{fa-icon}}` component. Except for one edge case: Passing a component invoked via the `{{component}}` helper.
+Since all invocations of `{{old-fa-icon}}` are transformed to HTML tags at compile time, there's no need for an actual `{{old-fa-icon}}` component. Except for one edge case: Passing a component invoked via the `{{component}}` helper.
 
 ```hbs
 {{async-button
   label="Submit"
-  icon=(component "fa-icon" "check")
+  icon=(component "old-fa-icon" "check")
 }}
 
 {{!-- or just --}}
 
-{{component "fa-icon" "rocket"}}
+{{component "old-fa-icon" "rocket"}}
 ```
 
-In your `ember-cli-build.js` you can enable the `includeComponent` option to include an `{{fa-icon}}` component for exactly that use case.
+In your `ember-cli-build.js` you can enable the `includeComponent` option to include an `{{old-fa-icon}}` component for exactly that use case.
 You will still benefit from all compile time optimizations, however we'll add a bit of additional JS to your asset bundle size.
 
 ```js

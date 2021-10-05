@@ -6,7 +6,7 @@ import { ClosureAction } from '@ember-decorators/argument/types';
 
 import layout from './template';
 
-export default class FaIconComponent extends Component.extend({
+export default class OldFaIconComponent extends Component.extend({
   layout,
   tagName: ''
 }) {

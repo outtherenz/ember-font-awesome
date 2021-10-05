@@ -13,11 +13,11 @@ test("An <ul> element with the class 'fa-ul' is rendered", function(assert) {
   assert.ok($list.hasClass('fa-ul'), "The <ul> element should have the 'fa-ul' class");
 });
 
-test('A contextual {{fa-icon}} component with listItem=true is yielded to a block', function(assert) {
+test('A contextual {{old-fa-icon}} component with listItem=true is yielded to a block', function(assert) {
   this.render(hbs`
     {{#fa-list as |l|}}
-      <li>{{l.fa-icon icon="star"}}Item 1</li>
-      <li>{{l.fa-icon icon="star"}}Item 2</li>
+      <li>{{l.old-fa-icon icon="star"}}Item 1</li>
+      <li>{{l.old-fa-icon icon="star"}}Item 2</li>
     {{/fa-list}}
   `);
 
